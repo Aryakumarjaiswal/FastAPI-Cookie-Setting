@@ -10,6 +10,7 @@ app = FastAPI()
 def create_session(response: Response, db: Session = Depends(get_db)):
     session_id = str(uuid.uuid4())  # Generate a unique session ID
     new_session = ChatSession(session_id=session_id)
+    
     db.add(new_session)
     db.commit()
 
